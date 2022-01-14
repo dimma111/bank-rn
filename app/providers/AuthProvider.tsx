@@ -1,6 +1,6 @@
 import React, { createContext, useEffect, useMemo, useState, FC } from "react";
 import { onAuthStateChanged, User } from "firebase/auth";
-import { addDoc, collection } from "firebase/firestore";
+import { setDoc, collection, doc } from "firebase/firestore";
 import { Alert } from "react-native";
 import { auth, db, login, logout, register } from "../firebase";
 
@@ -25,10 +25,13 @@ export const AuthProvider: FC = ({ children }) => {
     try {
       const { user } = await register(email, password);
 
-      await addDoc(collection(db, "users"), {
+      const test = await setDoc(doc(db, "users", user.uid), {
         _id: user.uid,
         displayName: "No name",
+        email: email,
       });
+
+      // console.log(test);
     } catch (error: any) {
       Alert.alert("Error reg: ", error);
     } finally {
