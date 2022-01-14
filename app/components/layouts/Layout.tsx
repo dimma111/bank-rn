@@ -6,7 +6,7 @@ interface ILayout {
   isScrollView?: boolean;
 }
 
-export const styleCenter = tw("h-full w-full bg-white pt-16");
+export const styleCenter = tw("h-full w-full bg-white pt-10");
 
 const Layout: FC<ILayout> = ({ children, isScrollView = true }) => {
   return (
