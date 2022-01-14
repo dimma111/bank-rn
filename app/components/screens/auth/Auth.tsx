@@ -1,11 +1,12 @@
 import React, { useState } from "react";
-import { View, Text, Pressable } from "react-native";
+import { View, Text, Pressable, Alert } from "react-native";
 import { styleCenter } from "../../layouts/Layout";
 import tw from "tailwind-rn";
 import { useAuth } from "../../../hooks/useAuth";
 import Loader from "../../ui/Loader";
 import Field from "../../ui/Field";
 import Button from "../../ui/Button";
+import { validateEmail } from "../../../utils/Validator";
 
 interface IData {
   email: string;
@@ -20,14 +21,19 @@ export default function Auth() {
   const authHandler = async () => {
     const { email, password } = data;
 
-    if (isReg) await register(email, password);
-    else await login(email, password);
+    if (password == null || password.length < 6)
+      Alert.alert("Error", "Password length must be more than 6 characters");
+    else if (!validateEmail(email))
+      Alert.alert("Error", "Email format incorrect");
+    else {
+      if (isReg) await register(email, password);
+      else await login(email, password);
 
-    console.log(user);
-    setData({} as IData);
+      setData({} as IData);
+    }
   };
 
-  console.log(user);
+  console.log();
 
   return (
     <View style={styleCenter}>
