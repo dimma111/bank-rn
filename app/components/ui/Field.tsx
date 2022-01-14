@@ -12,7 +12,7 @@ interface IField {
 const Field: FC<IField> = ({ onChange, placeholder, val, isSecure }) => {
   return (
     <TextInput
-      showSoftInputOnFocus={false}
+      // showSoftInputOnFocus={false}
       placeholder={placeholder}
       onChangeText={onChange}
       value={val || ""}
