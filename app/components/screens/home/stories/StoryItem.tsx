@@ -2,15 +2,18 @@ import React, { FC } from "react";
 import { View, Text, Pressable, ImageBackground } from "react-native";
 import { IStory } from "../../../../hooks/typesStories";
 import tw from "tailwind-rn";
+import { useData } from "../../../../hooks/useData";
 
 const StoryItem: FC<{ story: IStory }> = ({ story }) => {
+  const { setActiveStories } = useData();
+
   return (
-    <Pressable onPress={() => {}}>
+    <Pressable onPress={() => setActiveStories(story.images)}>
       <View
         style={{
           ...tw("w-24 h-24 rounded-2xl ml-3 border-solid border-blue-400"),
-          padding: 2,
-          borderWidth: 1,
+          padding: 0,
+          borderWidth: 2,
         }}
       >
         <ImageBackground
