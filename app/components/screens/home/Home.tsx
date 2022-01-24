@@ -2,6 +2,8 @@ import React from "react";
 import { View, Text } from "react-native";
 import { useAuth } from "../../../hooks/useAuth";
 import Layout from "../../layouts/Layout";
+import Accounts from "./accounts/Accounts";
+import ApplyNewCard from "./apply-new-card/ApplyNewCard";
 import Header from "./Header";
 import Stories from "./stories/Stories";
 
@@ -13,7 +15,8 @@ export default function Home() {
     <Layout>
       <Header />
       <Stories />
-      <Text>HOME SCREEN</Text>
+      <Accounts />
+      <ApplyNewCard />
     </Layout>
   );
 }

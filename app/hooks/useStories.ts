@@ -14,17 +14,6 @@ export const useStories = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    //  onSnapshot(query(collection(db, "stories")), (snapshot) => {
-    //   setStories(
-    //     snapshot.docs.map(
-    //       (d) =>
-    //         ({дома
-    //           _id: d.id,
-    //           ...d.data(),
-    //         } as IStory)
-    //     )
-    //   );
-    // console.log(snapshot.docs);
     async function getDataFirebase() {
       const querySnapshot = await getDocs(collection(db, "stories"));
       setStories(
