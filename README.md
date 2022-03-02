@@ -1,2 +1,2 @@
 # bank-rn
-My test project on react native 
+Mobile application for the bank, made on ReactNative
